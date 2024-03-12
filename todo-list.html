@@ -1,36 +1,65 @@
-<head>
-	<!-- meta:viewport | Configura a exibição e escala da página nos dispostivos -->
-	<!-- "width=device-width" faz a página ter o mesmo comprimento da tela do dispositivo -->
-	<!-- "initial-scale=1" estabelece uma escala 1:1 entre os pixels do CSS e os pixels independentes do dispositivo  -->
-	<!-- IMPORTANTÍSSIMO PARA QUE A PÁGINA SEJA RESPONSIVA EM TODOS OS TIPOS DE DISPOSITIVO!!! -->
-	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<!-- meta:viewport | Configura a exibição e escala da página nos dispostivos -->
+		<!-- "width=device-width" faz a página ter o mesmo comprimento da tela do dispositivo -->
+		<!-- "initial-scale=1" estabelece uma escala 1:1 entre os pixels do CSS e os pixels independentes do dispositivo  -->
+		<!-- IMPORTANTÍSSIMO PARA QUE A PÁGINA SEJA RESPONSIVA EM TODOS OS TIPOS DE DISPOSITIVO!!! -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=1"/>
 
-	<!-- meta:charset | Indica o formato de codificação dos caracteres da página (padrão é o UTF-8) -->
-	<meta charset="utf-8" />
-	
-	<!-- title | Define o título da página (o mesmo que aparece na aba do navegador e no resultado do Google) -->
-	<title>Lista de Afazeres</title>
+		<!-- meta:charset | Indica o formato de codificação dos caracteres da página (padrão é o UTF-8) -->
+		<meta charset="utf-8" />
+		
+		<!-- title | Define o título da página (o mesmo que aparece na aba do navegador e no resultado do Google) -->
+		<title>PraFazê!</title>
 
-	<!-- meta:description | Define o texto de descrição da página (aparece abaixo do título no Google) -->
-	<meta name="description" content="Uma aplicação de To-do list para a FCCFCSGTC"/>
+		<!-- meta:description | Define o texto de descrição da página (aparece abaixo do título no Google) -->
+		<meta name="description" content="Uma aplicação de To-do list para a FCCFCSGTC"/>
 
-	<!-- meta:keywords | Palavras-chave sobre a aplicação, gera pouco impacto nas buscas -->
-	<meta name="keywords" content="foo, bar, baz">
+		<!-- meta:keywords | Palavras-chave sobre a aplicação, gera pouco impacto nas buscas -->
+		<meta name="keywords" content="foo, bar, baz">
 
-	<!-- meta:robots | Dá instruções sobre a indexagem das páginas da aplicação para os 'web crawlers' -->
-	<meta name="robots" content="follow,index"/>
-	<meta name="robots" content="nofollow,noindex"/>
+		<!-- meta:robots | Dá instruções sobre a indexagem das páginas da aplicação para os 'web crawlers' -->
+		<meta name="robots" content="follow,index"/>
+		<meta name="robots" content="nofollow,noindex"/>
 
-	<!-- meta:og | Controla como a prévia de uma página é exibida (link 👈) quando compartilhada em uma rede social -->
-	<meta name="og:title" content="Título da página" />
-	<meta name="og:url" content="URL da página" />
-	<meta name="og:description" content="Descrição da página" />
-	<meta name="og:image" content="URL da imagem que aparece quando a página é compartilhada" />
+		<!-- meta:og | Controla como a prévia de uma página é exibida (link 👈) quando compartilhada em uma rede social -->
+		<meta name="og:title" content="PraFazê!" />
+		<meta name="og:url" content="URL da página" />
+		<meta name="og:description" content="Descrição da página" />
+		<meta name="og:image" content="URL da imagem que aparece quando a página é compartilhada" />
 
-	<!-- link:stylesheet | Especifica o caminho para arquivos de estilo -->
-	<link rel="stylesheet" href="styles.css">
-</head>
+		<!-- link:stylesheet | Especifica o caminho para arquivos de estilo -->
+		<link rel="stylesheet" href="styles.css">
+	</head>
 
-<body>
-    
-</body>
+	<body>
+		<header>
+			<h1>PraFazê!</h1>
+			
+		</header>
+		<container>
+			<form>
+				<input type="text" placeholder="O que precisa ser feito?">
+				<button>Adicionar</button>
+			</form>
+			<ul>
+				<li>
+					<input type="checkbox">
+					<span>Comprar pão</span>
+					<button>Remover</button>
+				</li>
+				<li>
+					<input type="checkbox">
+					<span>Estudar para a FCC</span>
+					<button>Remover</button>
+				</li>
+				<li>
+					<input type="checkbox">
+					<span>Estudar para a FCS</span>
+					<button>Remover</button>
+				</li>
+			</ul>
+		</container>
+	</body>
+</html>
