@@ -1,34 +1,73 @@
-import Image from "next/image"; 
+"use client";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import { useState } from 'react';
+import "./globals.css";
+
+interface tasks {
+  isComplete: boolean;
+  taskName: string;
+  taskID: number;
+}
+
 
 export default function Home() {
-  return (
-    <main className='h-screen w-screen text-lg sm:text-lg md:text-lg lg:text-xl xl:text-2xl relative'>
-      <header className='text-center flex items-center justify-center w-full font-bold p-2 text-4xl mt-20 sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl'>
-        <h1 className='text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mt-5'>
-          PraFazê
-        </h1>
-        <svg 
-          width="50px" 
-          height="50px" 
-          viewBox="0 -2 16 16" 
-          className="sm:ml-1 md:ml-2 lg:ml-3 xl:ml-5
-          scale-75 sm:scale-90 md:scale-110 lg:scale-150 xl:scale-150"
-          fill="black"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path fill="#000000" fill-rule="evenodd" d="M4,4 L9,4 C9.55228,4 10,3.55228 10,3 C10,2.44772 9.55228,2 9,2 L4,2 C2.89543,2 2,2.89543 2,4 L2,12 C2,13.1046 2.89543,14 4,14 L12,14 C13.1046,14 14,13.1046 14,12 L14,10 C14,9.44771 13.5523,9 13,9 C12.4477,9 12,9.44771 12,10 L12,12 L4,12 L4,4 Z M15.2071,2.29289 C14.8166,1.90237 14.1834,1.90237 13.7929,2.29289 L8.5,7.58579 L7.70711,6.79289 C7.31658,6.40237 6.68342,6.40237 6.29289,6.79289 C5.90237,7.18342 5.90237,7.81658 6.29289,8.20711 L7.79289,9.70711 C7.98043,9.89464 8.23478,10 8.5,10 C8.76522,10 9.01957,9.89464 9.20711,9.70711 L15.2071,3.70711 C15.5976,3.31658 15.5976,2.68342 15.2071,2.29289 Z"/>
-        </svg>
+  const [task, setTask] = useState<tasks[]>();
+  const [inputValue, setInputValue] = useState<>('');
+
+  function AddTask() {
+    const newTask: tasks = {isComplete: false, taskName: inputValue, taskID: Date.now()}
+    const newList = task
+    newList?.push(newTask);
+    setTask(newList);
+  }
+  
+  function DeleteTask() {
+  
+  }
+
+  function ListHeader() {
+
+
+
+    return(
+      <header className="display-flex flex-wrap p-4">
+          <input className="p-2 border-4"
+          onChange={(e) => setInputValue(e.target.value)} 
+          value={inputValue}
+           type="text" 
+           placeholder="Nova tarefa"/>
+          <button className="p-2 border-4" onClick={AddTask}>botão!</button>
       </header>
-      <main className="m-auto w-1/2 flex border-2 pt-2 rounded-xl flex-col mb-10">
-        <section className="text-justify w-full items-center border-2 p-1 px-2 flex-grow flex-row ">
-          <div className="w-full">
-            <input type="text" />
-            <button className="border-2 p-1 m-2 ml-1">
-              Add
-            </button>
-          </div>
-        </section>
+    );
+  }
+
+  
+  function ListBody() {
+
+    return(
+      
+    );
+  }
+  
+  function TodoList() {
+  
+    return(
+      <main className="display-flex border-4 rounded-lg">
+  
+        <div className="display-inline-flex">
+          <h1 className="font-bold text-6xl">PraFazê!</h1>
+          <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#000000" viewBox="0 0 256 256"><path d="M224,48V208a16,16,0,0,1-16,16H136a8,8,0,0,1,0-16h72V48H48v96a8,8,0,0,1-16,0V48A16,16,0,0,1,48,32H208A16,16,0,0,1,224,48ZM125.66,154.34a8,8,0,0,0-11.32,0L64,204.69,45.66,186.34a8,8,0,0,0-11.32,11.32l24,24a8,8,0,0,0,11.32,0l56-56A8,8,0,0,0,125.66,154.34Z"></path></svg>
+        </div>
+        <div> 
+          <ListHeader />
+          <ListBody />
+        </div>  
       </main>
-    </main>
+    );
+  }
+
+  return (
+    <TodoList />
   );
 }
