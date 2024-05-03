@@ -212,7 +212,7 @@ export default function Home() {
   }
 
   return (
-    <div className="display-flex  h-screen items-center self-center justify-self-center justify-center content-center">
+    <div className="display-flex  h-fit m-auto items-center self-center justify-self-center justify-center content-center">
       <TodoList />
     </div>
     
