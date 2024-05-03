@@ -3,7 +3,7 @@ import { useRef, useEffect, useState } from 'react';
 import "./globals.css";
 
 function useSessionStorage<T>(key: string, defaultValue: any){
-  const [state, setState] = useState<T>(() => {
+  const [state, setState] = useState<Task[]>(() => {
     if (typeof window !== "undefined") {
       const storedValue = sessionStorage.getItem(key);
       return storedValue ? JSON.parse(storedValue) : defaultValue;
@@ -38,7 +38,7 @@ task,
 toggleComplete,
 deleteTask }) => {
 return (
-  <div className='text-wrap flex items-center justify-between mt-4 rounded-lg border-2 m-auto my-2'> 
+  <div className='text-nowrap flex items-center justify-between mt-4 rounded-lg border-2 m-auto my-2'> 
     <input 
       type="checkbox" 
       checked={task.isComplete} 
@@ -46,7 +46,9 @@ return (
       className="m-2 appearance-none w-5 h-5 border-2 mr-2 rounded-sm bg-white peer shrink-0
       checked:bg-terracota checked:border-0"
     />
-    <label className="static">{task.taskName}</label>
+
+    <label style={{ textDecoration: task.isComplete ? "line-through" : 'none'}} className="text-center text-nowrap static">{task.taskName}</label>
+    
     <button 
       className="m-2 align-self-center hover:scale-110 hover:fill-terracota" 
       onClick={() => deleteTask(task.taskID)}>
@@ -55,7 +57,7 @@ return (
         width="32"
         height="32"
         viewBox="0 0 256 256">
-        
+
           <path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z"></path>
         </svg>
       
@@ -195,7 +197,7 @@ export default function Home() {
   function TodoList() {
   
     return(
-      <main className="m-auto w-fit display-flex border-gray-dark rounded-lg p-2 border-2">
+      <main className="self-center m-auto max-w-96 display-flex border-gray-dark rounded-lg p-2 border-2">
         <div className="flex items-center justify-center mt-4">
           <h1 className="font-bold text-6xl mr-4">PraFazê!</h1>
           <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="gray-dark" viewBox="0 0 256 256"><path d="M224,48V208a16,16,0,0,1-16,16H136a8,8,0,0,1,0-16h72V48H48v96a8,8,0,0,1-16,0V48A16,16,0,0,1,48,32H208A16,16,0,0,1,224,48ZM125.66,154.34a8,8,0,0,0-11.32,0L64,204.69,45.66,186.34a8,8,0,0,0-11.32,11.32l24,24a8,8,0,0,0,11.32,0l56-56A8,8,0,0,0,125.66,154.34Z"></path></svg>
@@ -210,7 +212,7 @@ export default function Home() {
   }
 
   return (
-    <div className="flex-auto  h-screen items-center justify-self-center justify-center content-center">
+    <div className="display-flex  h-screen items-center self-center justify-self-center justify-center content-center">
       <TodoList />
     </div>
     
