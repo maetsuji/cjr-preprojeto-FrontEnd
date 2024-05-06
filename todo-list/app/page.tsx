@@ -63,7 +63,7 @@ return (
       
     </button> 
   </div>
-);
+  );
 };
 
 export default function Home() {
@@ -116,7 +116,7 @@ export default function Home() {
 
     return(
       <header className="flex items-center justify-center p-4">
-          <input autoFocus ref={inputRef} className="p-2 border-2 rounded-lg mr-2"
+          <input id='entrada' autoFocus ref={inputRef} className="p-2 border-2 rounded-lg mr-2"
             onKeyDown={(e) => {
                 if (e.key === "Enter") {
                   AddTask();
@@ -140,9 +140,7 @@ export default function Home() {
         id="to-do list"
       >
         {filteredTasks.length === 0 ? (
-         <p
-            className={`text-center self-center flex-col`}
-        >
+         <p className={`text-center self-center flex-col`}>
           Não há tarefas! Hora de descansar 😴
         </p>
         ) : (
@@ -195,12 +193,19 @@ export default function Home() {
   }
 
   function TodoList() {
-  
+    //function focusInput() {
+    //  let InputBox = document.querySelector("input"); 
+    //  if (InputBox !== null) {
+    //   InputBox.focus();
+    //  } 
+    //} 
     return(
-      <main className="self-center m-auto max-w-96 display-flex border-gray-dark rounded-lg p-2 border-2">
+      <main className="flex flex-col justify-center align-center m-auto max-w-96 flex border-gray-dark rounded-lg p-2 border-2">
         <div className="flex items-center justify-center mt-4">
           <h1 className="font-bold text-6xl mr-4">PraFazê!</h1>
-          <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="gray-dark" viewBox="0 0 256 256"><path d="M224,48V208a16,16,0,0,1-16,16H136a8,8,0,0,1,0-16h72V48H48v96a8,8,0,0,1-16,0V48A16,16,0,0,1,48,32H208A16,16,0,0,1,224,48ZM125.66,154.34a8,8,0,0,0-11.32,0L64,204.69,45.66,186.34a8,8,0,0,0-11.32,11.32l24,24a8,8,0,0,0,11.32,0l56-56A8,8,0,0,0,125.66,154.34Z"></path></svg>
+          {/* <button onClick={focusInput()}> */}
+          <svg className="active:animate-bounce hover:fill-terracota transition-colors duration-300" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 256 256"><path d="M224,48V208a16,16,0,0,1-16,16H136a8,8,0,0,1,0-16h72V48H48v96a8,8,0,0,1-16,0V48A16,16,0,0,1,48,32H208A16,16,0,0,1,224,48ZM125.66,154.34a8,8,0,0,0-11.32,0L64,204.69,45.66,186.34a8,8,0,0,0-11.32,11.32l24,24a8,8,0,0,0,11.32,0l56-56A8,8,0,0,0,125.66,154.34Z"></path></svg>
+          {/* </button> */} 
         </div>
         <div> 
           <ListHeader />
@@ -212,7 +217,7 @@ export default function Home() {
   }
 
   return (
-    <div className="display-flex  h-fit m-auto items-center self-center justify-self-center justify-center content-center">
+    <div className="h-screen w-screenz m-auto flex justify-center align-center content-center">
       <TodoList />
     </div>
     
