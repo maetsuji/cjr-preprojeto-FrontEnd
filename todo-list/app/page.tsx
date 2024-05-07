@@ -38,7 +38,7 @@ task,
 toggleComplete,
 deleteTask }) => {
 return (
-  <div className='text-nowrap flex items-center justify-between mt-4 rounded-lg border-2 m-auto my-2'> 
+  <div className='text-wrap flex items-center justify-between mt-4 mx-3 rounded-lg border-2 m-auto my-2'> 
     <input 
       type="checkbox" 
       checked={task.isComplete} 
@@ -47,7 +47,7 @@ return (
       checked:bg-terracota checked:border-0"
     />
 
-    <label style={{ textDecoration: task.isComplete ? "line-through" : 'none'}} className="text-center text-nowrap static">{task.taskName}</label>
+    <label style={{ textDecoration: task.isComplete ? "line-through" : 'none'}} className="p-2 text-center text-wrap static">{task.taskName}</label>
     
     <button 
       className="m-2 align-self-center hover:scale-110 hover:fill-terracota" 
@@ -115,7 +115,7 @@ export default function Home() {
     const inputRef = useRef<HTMLInputElement>(null);
 
     return(
-      <header className="flex items-center justify-center p-4">
+      <header className="text-gray-dark border-gray-dark flex items-center justify-center p-4">
           <input id='entrada' autoFocus ref={inputRef} className="p-2 border-2 rounded-lg mr-2"
             onKeyDown={(e) => {
                 if (e.key === "Enter") {
@@ -125,7 +125,16 @@ export default function Home() {
             }
            type="text" 
            placeholder="Nova tarefa"/>
-          <button className="ml-2 p-2 border-2 rounded-lg hover:bg-terracota hover:border-terracota transition-colors duration-300" onClick={AddTask}>Add</button>
+          <button 
+            className="
+              ml-2 p-1
+              border-2 rounded-lg 
+              text-white border-gray-dark bg-gray-dark 
+              hover:bg-terracota hover:border-terracota 
+              transition-colors duration-300" 
+            onClick={AddTask}>
+              <svg className='fill-white' xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewBox="0 0 256 256"><path d="M228,128a12,12,0,0,1-12,12H140v76a12,12,0,0,1-24,0V140H40a12,12,0,0,1,0-24h76V40a12,12,0,0,1,24,0v76h76A12,12,0,0,1,228,128Z"></path></svg>
+          </button>
       </header>
     );
   }
@@ -135,12 +144,12 @@ export default function Home() {
 
     return( 
       <div
-        className="max-h-screen overflow-y-auto px-1 my-2 justify-center"
+        className="max-h-screen overflow-y-auto px-1 my-2 mb-3 justify-center"
        style={{ maxHeight: "35rem", minHeight: "10rem" }}
         id="to-do list"
       >
         {filteredTasks.length === 0 ? (
-         <p className={`text-center self-center flex-col`}>
+         <p className={`text-gray-dark text-center self-center flex-col`}>
           Não há tarefas! Hora de descansar 😴
         </p>
         ) : (
@@ -161,26 +170,26 @@ export default function Home() {
     return(
       <footer>
         <div className="flex items-center justify-evenly p-4">
-        <button className="p-2 border-2 rounded-lg hover:bg-terracota hover:border-terracota transition-colors duration-300" onClick={() => setFilter("all")}>Todas</button>
-        <button className="p-2 border-2 rounded-lg hover:bg-terracota hover:border-terracota transition-colors duration-300" onClick={() => setFilter("active")}>A Fazer</button>
-        <button className="p-2 border-2 rounded-lg hover:bg-terracota hover:border-terracota transition-colors duration-300" onClick={() => setFilter("completed")}>Completas</button>
+          <button className="min-w-20 p-2 border-2 rounded-lg text-gray-dark border-gray-dark hover:bg-terracota hover:border-terracota transition-colors duration-300" onClick={() => setFilter("all")}>Todas</button>
+          <button className="min-w-20 p-2 border-2 rounded-lg text-gray-dark border-gray-dark hover:bg-terracota hover:border-terracota transition-colors duration-300" onClick={() => setFilter("active")}>A Fazer</button>
+          <button className="min-w-20 p-2 border-2 rounded-lg text-gray-dark border-gray-dark hover:bg-terracota hover:border-terracota transition-colors duration-300" onClick={() => setFilter("completed")}>Feitas</button>
         </div>
-        <div className="text-wrap flex items-center justify-evenly p-4">
+        <div className="text-wrap flex items-center justify-between p-3">
           <div>
             {tasks.length === 0 ? (
-              <p className="text-center"></p>
+              <p className= "text-wrap text-center"></p>
             ) : (
-            <p className="text-center">Tarefas restantes: {remainingTasks}</p>
+            <p className="border-black mx-2 text-wrap text-center">Tarefas restantes: {remainingTasks}</p>
             )}
           </div>
           <div>
             {tasks.length !== 0 ? (
-              <button className="p-2 border-2 rounded-lg hover:bg-terracota hover:border-terracota transition-colors duration-300" 
+              <button className= "text-gray-dark border-gray-dark mx-2 p-2 border-2 rounded-lg hover:bg-terracota hover:border-terracota transition-colors duration-300" 
                 onClick={() => {
                   const incompleteTasks = tasks.filter((task: Task) => !task.isComplete);
                   setTasks(incompleteTasks);
                 }}
-                >Limpar Concluidas
+                >Limpar Feitas
               </button>
               ) : (
               <p className="text-center"></p>
@@ -200,11 +209,11 @@ export default function Home() {
     //  } 
     //} 
     return(
-      <main className="flex flex-col justify-center align-center m-auto max-w-96 flex border-gray-dark rounded-lg p-2 border-2">
-        <div className="flex items-center justify-center mt-4">
-          <h1 className="font-bold text-6xl mr-4">PraFazê!</h1>
+      <main className="flex flex-col justify-center align-center m-auto max-w-96 flex border-gray-dark rounded-3xl p-2 border-2">
+        <div className="flex items-center justify-center mx-2 mt-2">
+          <h1 className="font-bold text-gray-dark text-6xl mr-4">PraFazê!</h1>
           {/* <button onClick={focusInput()}> */}
-          <svg className="active:animate-bounce hover:fill-terracota transition-colors duration-300" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 256 256"><path d="M224,48V208a16,16,0,0,1-16,16H136a8,8,0,0,1,0-16h72V48H48v96a8,8,0,0,1-16,0V48A16,16,0,0,1,48,32H208A16,16,0,0,1,224,48ZM125.66,154.34a8,8,0,0,0-11.32,0L64,204.69,45.66,186.34a8,8,0,0,0-11.32,11.32l24,24a8,8,0,0,0,11.32,0l56-56A8,8,0,0,0,125.66,154.34Z"></path></svg>
+          <svg className="fill-gray-dark active:animate-bounce hover:fill-terracota transition-colors duration-300" xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 256 256"><path d="M224,48V208a16,16,0,0,1-16,16H136a8,8,0,0,1,0-16h72V48H48v96a8,8,0,0,1-16,0V48A16,16,0,0,1,48,32H208A16,16,0,0,1,224,48ZM125.66,154.34a8,8,0,0,0-11.32,0L64,204.69,45.66,186.34a8,8,0,0,0-11.32,11.32l24,24a8,8,0,0,0,11.32,0l56-56A8,8,0,0,0,125.66,154.34Z"></path></svg>
           {/* </button> */} 
         </div>
         <div> 
